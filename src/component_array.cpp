@@ -6,49 +6,41 @@ NOTES:
 #include "component_array.hpp"
 
 namespace apollo {
+    ComponentArray::ComponentArray(size_t initial_capacity, size_t size) :
+            ComponentStorage(),
+            _bytes(initial_capacity * size),
+            _component_size(size),
+            _current_size(0)
+    {}
 
+    ComponentArray::~ComponentArray() {}
 
-    template <class T>
-    ComponentArray::ComponentArray(bool check_safety = true) {
-
+    template<class T>
+    ComponentArray ComponentArray::new_for_type(size_t initial_capacity) {
+        return ComponentArray(initial_capacity, sizeof(T));
     }
 
-    ComponentArray::~ComponentArray() {
-
+    bool ComponentArray::add_for(const Entity& entity, const Component& component) {
+        if (_data_lookup.count(entity) > 0) {
+            return false; //entity already has a component stored!
+        }
+        if (_current_size == _bytes.size()) {
+            _bytes.resize(_bytes.size() * 2, 0); //double the size of source array
+        }
+        uint8_t* target = &(_bytes.at(_current_size * _component_size));
+        uint8_t const* source = reinterpret_cast<uint8_t const*>(&component);
+        for (size_t i = 0; i < _component_size; i++) {
+            target[i] = source[i];
+        }
+        _current_size++;
+        _data_lookup[entity] = reinterpret_cast<Component*>(target);
+        return true;
     }
 
-    size_t ComponentArray::size() const {
-
+    bool ComponentArray::remove_for(const Entity& entity) {
+        if (_data_lookup.count(entity) > 0) {
+            return false; //entity doesn't have a component stored
+        }
     }
-
-    template <class T>
-    T* ComponentArray::get(const Entity& entity) {
-
-    }
-
-    template <class T>
-    T const* ComponentArray::get(const Entity& entity) const {
-
-    }
-
-    void ComponentArray::erase_at(size_t position) {
-
-    }
-
-    template <class T>
-    T* ComponentArray::get_data() {
-
-    }
-
-    template <class T>
-    T const* ComponentArray::get_data() const {
-
-    }
-
-    template <class T>
-    void ComponentArray::set(const Entity& entity, const T& component) {
-
-    }
-
 }
 

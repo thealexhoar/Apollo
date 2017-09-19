@@ -6,44 +6,30 @@ NOTES:
 #pragma once
 
 #include <cinttypes>
-#include <typeinfo>
 #include <vector>
 
 #include "component.hpp"
+#include "component_storage.hpp"
 #include "entity.hpp"
 
 namespace apollo {
 
-    class ComponentArray {
-    private:
+    class ComponentArray : public ComponentStorage {
+    protected:
         std::vector<uint8_t> _bytes;
-        size_t _component_hash;
-        size_t _component_size;
+        size_t _component_size, _current_size;
+
+    protected:
+        ComponentArray(size_t initial_capacity, size_t size);
 
     public:
-        template <class T>
-        ComponentArray(bool check_safety = true);
-
         ~ComponentArray();
 
-        size_t size() const;
-
         template <class T>
-        T* get(const Entity& entity);
+        static ComponentArray new_for_type(size_t initial_capacity);
 
-        template <class T>
-        T const* get(const Entity& entity) const;
+        bool add_for(const Entity& entity, const Component& component) override;
 
-        void erase_at(size_t position);
-
-        template <class T>
-        T* get_data();
-
-        template <class T>
-        T const* get_data() const;
-
-        template <class T>
-        void set(const Entity& entity, const T& component);
+        bool remove_for(const Entity& entity) override;
     };
-
 }

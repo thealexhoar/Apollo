@@ -1,21 +1,25 @@
 cmake_minimum_required(VERSION 3.8)
 project(apollo)
 
-
+set(CMAKE_CXX_STANDARD 11)
 
 # Prevents cmake from following symbolic links using GLOB
 cmake_policy( SET CMP0009 NEW)
 
 set(SOURCE_FILES
+        src/component_array.cpp
+        src/component_map.cpp
         src/world.cpp
         src/system.cpp
         src/types.cpp
-        src/component_array.cpp)
+)
 
 set(HEADER_FILES
         src/apollo.hpp
         src/component.hpp
         src/component_array.hpp
+        src/component_map.hpp
+        src/component_storage.hpp
         src/entity.hpp
         src/resource_accessor.hpp
         src/resource_subscription.hpp
@@ -24,5 +28,15 @@ set(HEADER_FILES
         src/world.hpp
 )
 
+set(CATCH_FILE test/catch/catch.hpp)
+
+set(TEST_FILES
+        test/apollo_tests.cpp
+)
+
 # Output Library
-add_library(Apollo STATIC ${SOURCE_FILES} ${HEADER_FILES})
+add_library(apollo STATIC ${SOURCE_FILES} ${HEADER_FILES})
+
+add_executable(apollo_test ${CATCH_FILE} ${TEST_FILES})
+
+target_link_libraries(apollo_test apollo)

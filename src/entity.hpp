@@ -9,9 +9,6 @@ NOTES:
 
 namespace apollo {
 
-    struct Entity {
-        uint32_t index;
-        uint32_t generation;
-    };
+    typedef uint32_t Entity;
 
 }

@@ -8,25 +8,22 @@ cmake_policy( SET CMP0009 NEW)
 
 set(SOURCE_FILES
         src/component_array.cpp
-        src/component_map.cpp
         src/world.cpp
+        src/resource_accessor.cpp
         src/system.cpp
         src/types.cpp
 )
 
 set(HEADER_FILES
         src/apollo.hpp
-        src/component.hpp
         src/component_array.hpp
-        src/component_map.hpp
-        src/component_storage.hpp
         src/entity.hpp
         src/resource_accessor.hpp
         src/resource_subscription.hpp
         src/system.hpp
         src/types.hpp
         src/world.hpp
-)
+        src/component.hpp src/resource_wrapper.hpp)
 
 set(CATCH_FILE test/catch/catch.hpp)
 

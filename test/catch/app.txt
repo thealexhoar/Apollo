@@ -1,0 +1,330 @@
+{
+    "intervalInDays": 45,
+    "churnRate": 0.05,
+    "churnPeriod": 5,
+    "initialUsers": 10000,
+    "newUsersPerDay": 250,
+    "lifecycleProp": "lifecycle",
+    "cohorts": {
+        "110": { "churnDelta": 0.30 }
+    },
+    "userProperties": [{
+        "name": "num_friends",
+        "range": { "min": 0, "max": 1000 }
+    }, {
+        "name": "mrr",
+        "values": [0, 10, 20, 30]
+    }, {
+        "name": "lifecycle",
+        "segment": {
+            "acquired": { "rate": 0.2, "churnRate": 0.45, "next": "choose_favorites", "nextRate": 0.4 },
+            "choose_favorites": { "rate": 0.2, "churnRate": 0.45, "next": "setup_profile", "nextRate": 0.4 },
+            "setup_profile": { "rate": 0.15, "churnRate": 0.45, "next": "started_trial", "nextRate": 0.4 },
+            "started_trial": { "rate": 0.10, "churnRate": 0.45, "next": "activated", "nextRate": 0.4 },
+            "activated": { "rate": 0.10, "churnRate": 0.45, "next": "free", "nextRate": 0.4 },
+            "free": { "rate": 0.10, "churnRate": 0.45, "next": "premium", "nextRate": 0.4 },
+            "premium": { "rate": 0.10 , "churnRate": 0.25, "next": "family", "nextRate": 0.4 },
+            "family": { "rate": 0.05, "churnRate": 0.2 }
+        }
+    }, {
+        "name": "email",
+        "email": true
+    }, {
+        "name": "location",
+        "location": true
+    }, {
+        "name": "full_name",
+        "full_name": true
+    }],
+    "events": [{
+        "entype": "mobile",
+        "evname": "download_app",
+        "properties": [
+            { "name": "app_version", "values": [ "1.0.1", "1.2.3", "2.1.2" ] },
+            { "name": "os", "values": [ "iOS", "Android" ] },
+            { "name": "campaign", "values": [ "campaign1", "campaign2" ] },
+            { "name": "source", "values": [ "google", "bing", "app_store" ] },
+            { "name": "manufacturer", "values": [ "apple", "samsung", "lg" ] },
+            { "name": "device_version", "values": [ "1.0", "2.0", "3.4" ] },
+            { "name": "os_version", "values": [ "4.4", "9.1", "5.0" ] }
+        ],
+        "count": { "min": 0, "max": 1 }
+    }, {
+        "entype": "mobile",
+        "evname": "change_plan",
+        "properties": [
+            { "name": "sku", "values": [ "free", "premium", "family" ] },
+            { "name": "cost", "values": [ 0, 10, 20 ] },
+            { "name": "app_version", "values": [ "1.0.1", "1.2.3", "2.1.2" ] },
+            { "name": "os", "values": [ "iOS", "Android" ] },
+            { "name": "campaign", "values": [ "campaign1", "campaign2" ] },
+            { "name": "source", "values": [ "google", "bing", "app_store" ] },
+            { "name": "manufacturer", "values": [ "apple", "samsung", "lg" ] },
+            { "name": "device_version", "values": [ "1.0", "2.0", "3.4" ] },
+            { "name": "os_version", "values": [ "4.4", "9.1", "5.0" ] }
+        ],
+        "count": { "min": 0, "max": 3 }
+    }, {
+        "entype": "mobile",
+        "evname": "play_song",
+        "properties": [
+            { "name": "artist", "fake": "{{commerce.productAdjective}} {{commerce.productMaterial}} {{commerce.product}}" },
+            { "name": "song", "fake": "{{commerce.productAdjective}} {{commerce.productMaterial}} {{commerce.product}}" },
+            { "name": "time", "range": { "min": 2, "max": 30, "float": true } },
+            { "name": "app_version", "values": [ "1.0.1", "1.2.3", "2.1.2" ] },
+            { "name": "os", "values": [ "iOS", "Android" ] },
+            { "name": "campaign", "values": [ "campaign1", "campaign2" ] },
+            { "name": "source", "values": [ "google", "bing", "app_store" ] },
+            { "name": "manufacturer", "values": [ "apple", "samsung", "lg" ] },
+            { "name": "device_version", "values": [ "1.0", "2.0", "3.4" ] },
+            { "name": "os_version", "values": [ "4.4", "9.1", "5.0" ] }
+        ],
+        "count": { "min": 1, "max": 3 }
+    }, {
+        "entype": "mobile",
+        "evname": "skip_song",
+        "properties": [
+            { "name": "artist", "fake": "{{commerce.productAdjective}} {{commerce.productMaterial}} {{commerce.product}}" },
+            { "name": "song", "fake": "{{commerce.productAdjective}} {{commerce.productMaterial}} {{commerce.product}}" },
+            { "name": "time", "range": { "min": 2, "max": 30, "float": true } },
+            { "name": "app_version", "values": [ "1.0.1", "1.2.3", "2.1.2" ] },
+            { "name": "os", "values": [ "iOS", "Android" ] },
+            { "name": "campaign", "values": [ "campaign1", "campaign2" ] },
+            { "name": "source", "values": [ "google", "bing", "app_store" ] },
+            { "name": "manufacturer", "values": [ "apple", "samsung", "lg" ] },
+            { "name": "device_version", "values": [ "1.0", "2.0", "3.4" ] },
+            { "name": "os_version", "values": [ "4.4", "9.1", "5.0" ] }
+        ],
+        "count": { "min": 1, "max": 3 }
+    }, {
+        "entype": "mobile",
+        "evname": "invite_friend",
+        "properties": [
+            { "name": "friends_email", "email": true },
+            { "name": "app_version", "values": [ "1.0.1", "1.2.3", "2.1.2" ] },
+            { "name": "os", "values": [ "iOS", "Android" ] },
+            { "name": "campaign", "values": [ "campaign1", "campaign2" ] },
+            { "name": "source", "values": [ "google", "bing", "app_store" ] },
+            { "name": "manufacturer", "values": [ "apple", "samsung", "lg" ] },
+            { "name": "device_version", "values": [ "1.0", "2.0", "3.4" ] },
+            { "name": "os_version", "values": [ "4.4", "9.1", "5.0" ] }
+        ],
+        "count": { "min": 1, "max": 3 }
+    }, {
+        "entype": "mobile",
+        "evname": "share_playlist",
+        "properties": [
+            { "name": "playlist_name", "fake": "{{commerce.productAdjective}} {{commerce.productMaterial}} {{commerce.product}}" },
+            { "name": "app_version", "values": [ "1.0.1", "1.2.3", "2.1.2" ] },
+            { "name": "os", "values": [ "iOS", "Android" ] },
+            { "name": "campaign", "values": [ "campaign1", "campaign2" ] },
+            { "name": "source", "values": [ "google", "bing", "app_store" ] },
+            { "name": "manufacturer", "values": [ "apple", "samsung", "lg" ] },
+            { "name": "device_version", "values": [ "1.0", "2.0", "3.4" ] },
+            { "name": "os_version", "values": [ "4.4", "9.1", "5.0" ] }
+        ],
+        "count": { "min": 0, "max": 3 }
+    }, {
+        "entype": "mobile",
+        "evname": "follow_playlist",
+        "properties": [
+            { "name": "playlist_name", "fake": "{{commerce.productAdjective}} {{commerce.productMaterial}} {{commerce.product}}" },
+            { "name": "app_version", "values": [ "1.0.1", "1.2.3", "2.1.2" ] },
+            { "name": "os", "values": [ "iOS", "Android" ] },
+            { "name": "campaign", "values": [ "campaign1", "campaign2" ] },
+            { "name": "source", "values": [ "google", "bing", "app_store" ] },
+            { "name": "manufacturer", "values": [ "apple", "samsung", "lg" ] },
+            { "name": "device_version", "values": [ "1.0", "2.0", "3.4" ] },
+            { "name": "os_version", "values": [ "4.4", "9.1", "5.0" ] }
+        ],
+        "count": { "min": 0, "max": 3 }
+    }, {
+        "entype": "mobile",
+        "evname": "save_song_to_library",
+        "properties": [
+            { "name": "artist", "fake": "{{commerce.productAdjective}} {{commerce.productMaterial}} {{commerce.product}}" },
+            { "name": "song", "fake": "{{commerce.productAdjective}} {{commerce.productMaterial}} {{commerce.product}}" },
+            { "name": "time", "range": { "min": 2, "max": 30, "float": true } },
+            { "name": "app_version", "values": [ "1.0.1", "1.2.3", "2.1.2" ] },
+            { "name": "os", "values": [ "iOS", "Android" ] },
+            { "name": "campaign", "values": [ "campaign1", "campaign2" ] },
+            { "name": "source", "values": [ "google", "bing", "app_store" ] },
+            { "name": "manufacturer", "values": [ "apple", "samsung", "lg" ] },
+            { "name": "device_version", "values": [ "1.0", "2.0", "3.4" ] },
+            { "name": "os_version", "values": [ "4.4", "9.1", "5.0" ] }
+        ],
+        "count": { "min": 1, "max": 3 }
+    }, {
+        "entype": "mobile",
+        "evname": "add_song_to_playlist",
+        "properties": [
+            { "name": "artist", "fake": "{{commerce.productAdjective}} {{commerce.productMaterial}} {{commerce.product}}" },
+            { "name": "song", "fake": "{{commerce.productAdjective}} {{commerce.productMaterial}} {{commerce.product}}" },
+            { "name": "playlist_name", "fake": "{{commerce.productAdjective}} {{commerce.productMaterial}} {{commerce.product}}" },
+            { "name": "app_version", "values": [ "1.0.1", "1.2.3", "2.1.2" ] },
+            { "name": "os", "values": [ "iOS", "Android" ] },
+            { "name": "campaign", "values": [ "campaign1", "campaign2" ] },
+            { "name": "source", "values": [ "google", "bing", "app_store" ] },
+            { "name": "manufacturer", "values": [ "apple", "samsung", "lg" ] },
+            { "name": "device_version", "values": [ "1.0", "2.0", "3.4" ] },
+            { "name": "os_version", "values": [ "4.4", "9.1", "5.0" ] }
+        ],
+        "count": { "min": 1, "max": 3 }
+    }, {
+        "entype": "mobile",
+        "evname": "remove_song_from_playlist",
+        "properties": [
+            { "name": "artist", "fake": "{{commerce.productAdjective}} {{commerce.productMaterial}} {{commerce.product}}" },
+            { "name": "song", "fake": "{{commerce.productAdjective}} {{commerce.productMaterial}} {{commerce.product}}" },
+            { "name": "playlist_name", "fake": "{{commerce.productAdjective}} {{commerce.productMaterial}} {{commerce.product}}" },
+            { "name": "app_version", "values": [ "1.0.1", "1.2.3", "2.1.2" ] },
+            { "name": "os", "values": [ "iOS", "Android" ] },
+            { "name": "campaign", "values": [ "campaign1", "campaign2" ] },
+            { "name": "source", "values": [ "google", "bing", "app_store" ] },
+            { "name": "manufacturer", "values": [ "apple", "samsung", "lg" ] },
+            { "name": "device_version", "values": [ "1.0", "2.0", "3.4" ] },
+            { "name": "os_version", "values": [ "4.4", "9.1", "5.0" ] }
+        ],
+        "count": { "min": 1, "max": 3 }
+    }, {
+        "entype": "web",
+        "evname": "download_app",
+        "properties": [
+            { "name": "app_version", "values": [ "1.0.1", "1.2.3", "2.1.2" ] },
+            { "name": "os", "values": [ "Windows", "OSX" ] },
+            { "name": "campaign", "values": [ "campaign1", "campaign2" ] },
+            { "name": "source", "values": [ "google", "bing", "app_store" ] },
+            { "name": "browser", "values": [ "IE/Edge", "Chrome", "Firefox" ] },
+            { "name": "browser_version", "values": [ "54", "10", "37" ] }
+        ],
+        "count": { "min": 0, "max": 1 }
+    }, {
+        "entype": "web",
+        "evname": "change_plan",
+        "properties": [
+            { "name": "sku", "values": [ "free", "premium", "family" ] },
+            { "name": "cost", "values": [ 0, 10, 20 ] },
+            { "name": "app_version", "values": [ "1.0.1", "1.2.3", "2.1.2" ] },
+            { "name": "os", "values": [ "Windows", "OSX" ] },
+            { "name": "campaign", "values": [ "campaign1", "campaign2" ] },
+            { "name": "source", "values": [ "google", "bing", "app_store" ] },
+            { "name": "browser", "values": [ "IE/Edge", "Chrome", "Firefox" ] },
+            { "name": "browser_version", "values": [ "54", "10", "37" ] }
+        ],
+        "count": { "min": 0, "max": 3 }
+    }, {
+        "entype": "web",
+        "evname": "play_song",
+        "properties": [
+            { "name": "artist", "fake": "{{commerce.productAdjective}} {{commerce.productMaterial}} {{commerce.product}}" },
+            { "name": "song", "fake": "{{commerce.productAdjective}} {{commerce.productMaterial}} {{commerce.product}}" },
+            { "name": "time", "range": { "min": 2, "max": 30, "float": true } },
+            { "name": "app_version", "values": [ "1.0.1", "1.2.3", "2.1.2" ] },
+            { "name": "os", "values": [ "Windows", "OSX" ] },
+            { "name": "campaign", "values": [ "campaign1", "campaign2" ] },
+            { "name": "source", "values": [ "google", "bing", "app_store" ] },
+            { "name": "browser", "values": [ "IE/Edge", "Chrome", "Firefox" ] },
+            { "name": "browser_version", "values": [ "54", "10", "37" ] }
+        ],
+        "count": { "min": 1, "max": 3 }
+    }, {
+        "entype": "web",
+        "evname": "skip_song",
+        "properties": [
+            { "name": "artist", "fake": "{{commerce.productAdjective}} {{commerce.productMaterial}} {{commerce.product}}" },
+            { "name": "song", "fake": "{{commerce.productAdjective}} {{commerce.productMaterial}} {{commerce.product}}" },
+            { "name": "time", "range": { "min": 2, "max": 30, "float": true } },
+            { "name": "app_version", "values": [ "1.0.1", "1.2.3", "2.1.2" ] },
+            { "name": "os", "values": [ "Windows", "OSX" ] },
+            { "name": "campaign", "values": [ "campaign1", "campaign2" ] },
+            { "name": "source", "values": [ "google", "bing", "app_store" ] },
+            { "name": "browser", "values": [ "IE/Edge", "Chrome", "Firefox" ] },
+            { "name": "browser_version", "values": [ "54", "10", "37" ] }
+        ],
+        "count": { "min": 1, "max": 3 }
+    }, {
+        "entype": "web",
+        "evname": "invite_friend",
+        "properties": [
+            { "name": "friends_email", "email": true },
+            { "name": "app_version", "values": [ "1.0.1", "1.2.3", "2.1.2" ] },
+            { "name": "os", "values": [ "Windows", "OSX" ] },
+            { "name": "campaign", "values": [ "campaign1", "campaign2" ] },
+            { "name": "source", "values": [ "google", "bing", "app_store" ] },
+            { "name": "browser", "values": [ "IE/Edge", "Chrome", "Firefox" ] },
+            { "name": "browser_version", "values": [ "54", "10", "37" ] }
+        ],
+        "count": { "min": 1, "max": 3 }
+    }, {
+        "entype": "web",
+        "evname": "share_playlist",
+        "properties": [
+            { "name": "playlist_name", "fake": "{{commerce.productAdjective}} {{commerce.productMaterial}} {{commerce.product}}" },
+            { "name": "app_version", "values": [ "1.0.1", "1.2.3", "2.1.2" ] },
+            { "name": "os", "values": [ "Windows", "OSX" ] },
+            { "name": "campaign", "values": [ "campaign1", "campaign2" ] },
+            { "name": "source", "values": [ "google", "bing", "app_store" ] },
+            { "name": "browser", "values": [ "IE/Edge", "Chrome", "Firefox" ] },
+            { "name": "browser_version", "values": [ "54", "10", "37" ] }
+        ],
+        "count": { "min": 1, "max": 3 }
+    }, {
+        "entype": "web",
+        "evname": "follow_playlist",
+        "properties": [
+            { "name": "playlist_name", "fake": "{{commerce.productAdjective}} {{commerce.productMaterial}} {{commerce.product}}" },
+            { "name": "app_version", "values": [ "1.0.1", "1.2.3", "2.1.2" ] },
+            { "name": "os", "values": [ "Windows", "OSX" ] },
+            { "name": "campaign", "values": [ "campaign1", "campaign2" ] },
+            { "name": "source", "values": [ "google", "bing", "app_store" ] },
+            { "name": "browser", "values": [ "IE/Edge", "Chrome", "Firefox" ] },
+            { "name": "browser_version", "values": [ "54", "10", "37" ] }
+        ],
+        "count": { "min": 0, "max": 3 }
+    }, {
+        "entype": "web",
+        "evname": "save_song_to_library",
+        "properties": [
+            { "name": "artist", "fake": "{{commerce.productAdjective}} {{commerce.productMaterial}} {{commerce.product}}" },
+            { "name": "song", "fake": "{{commerce.productAdjective}} {{commerce.productMaterial}} {{commerce.product}}" },
+            { "name": "time", "range": { "min": 2, "max": 30, "float": true } },
+            { "name": "app_version", "values": [ "1.0.1", "1.2.3", "2.1.2" ] },
+            { "name": "os", "values": [ "Windows", "OSX" ] },
+            { "name": "campaign", "values": [ "campaign1", "campaign2" ] },
+            { "name": "source", "values": [ "google", "bing", "app_store" ] },
+            { "name": "browser", "values": [ "IE/Edge", "Chrome", "Firefox" ] },
+            { "name": "browser_version", "values": [ "54", "10", "37" ] }
+        ],
+        "count": { "min": 1, "max": 3 }
+    }, {
+        "entype": "web",
+        "evname": "add_song_to_playlist",
+        "properties": [
+            { "name": "artist", "fake": "{{commerce.productAdjective}} {{commerce.productMaterial}} {{commerce.product}}" },
+            { "name": "song", "fake": "{{commerce.productAdjective}} {{commerce.productMaterial}} {{commerce.product}}" },
+            { "name": "playlist_name", "fake": "{{commerce.productAdjective}} {{commerce.productMaterial}} {{commerce.product}}" },
+            { "name": "app_version", "values": [ "1.0.1", "1.2.3", "2.1.2" ] },
+            { "name": "os", "values": [ "Windows", "OSX" ] },
+            { "name": "campaign", "values": [ "campaign1", "campaign2" ] },
+            { "name": "source", "values": [ "google", "bing", "app_store" ] },
+            { "name": "browser", "values": [ "IE/Edge", "Chrome", "Firefox" ] },
+            { "name": "browser_version", "values": [ "54", "10", "37" ] }
+        ],
+        "count": { "min": 1, "max": 3 }
+    }, {
+        "entype": "web",
+        "evname": "remove_song_from_playlist",
+        "properties": [
+            { "name": "artist", "fake": "{{commerce.productAdjective}} {{commerce.productMaterial}} {{commerce.product}}" },
+            { "name": "song", "fake": "{{commerce.productAdjective}} {{commerce.productMaterial}} {{commerce.product}}" },
+            { "name": "playlist_name", "fake": "{{commerce.productAdjective}} {{commerce.productMaterial}} {{commerce.product}}" },
+            { "name": "app_version", "values": [ "1.0.1", "1.2.3", "2.1.2" ] },
+            { "name": "os", "values": [ "Windows", "OSX" ] },
+            { "name": "campaign", "values": [ "campaign1", "campaign2" ] },
+            { "name": "source", "values": [ "google", "bing", "app_store" ] },
+            { "name": "browser", "values": [ "IE/Edge", "Chrome", "Firefox" ] },
+            { "name": "browser_version", "values": [ "54", "10", "37" ] }
+        ],
+        "count": { "min": 1, "max": 3 }
+    }]
+}

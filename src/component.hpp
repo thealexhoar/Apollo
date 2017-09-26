@@ -1,6 +1,6 @@
 /*
 CREATED: 17/09/17
-NOTES: 
+NOTES:
 */
 
 #pragma once
@@ -10,8 +10,6 @@ namespace apollo {
     class Component {
     public:
         virtual ~Component() = 0;
-    protected:
-        Component();
     };
 
 }

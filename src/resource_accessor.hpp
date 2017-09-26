@@ -5,22 +5,51 @@ NOTES:
 
 #pragma once
 
-#include <map>
+#include <unordered_map>
 
-#include "component_storage.hpp"
+#include "component_array.hpp"
+#include "resource_wrapper.hpp"
 #include "types.hpp"
+#include "world.hpp"
 
 namespace apollo {
 
+    //Worlds "create" ResourceAccessors, so best to forward declare here
+    class World;
+
     class ResourceAccessor {
+        friend class World;
+
     private:
-        std::map<ComponentType, ComponentStorage const*> _read_components;
-        std::map<ComponentType, ComponentStorage*> _write_components;
-        std::map<ResourceType, void const*> _read_resources;
-        std::map<ResourceType, void*> _write_resources;
+        //TODO 9/26/17: add Dispatcher as a friend class
+        std::unordered_map<ComponentType, ComponentArray const*> _read_components;
+        std::unordered_map<ComponentType, ComponentArray*> _write_components;
+        std::unordered_map<ResourceType, ResourceWrapper const*> _read_resources;
+        std::unordered_map<ResourceType, ResourceWrapper*> _write_resources;
+
+        TypeManager& _type_manager;
+
+    private:
+        ResourceAccessor(TypeManager& type_manager);
 
     public:
+        template <class T>
+        T const* read_component(const Entity& entity);
 
+        template <class T>
+        T* write_component(const Entity& entity);
+
+        template <class T>
+        T const* read_component_data();
+
+        template <class T>
+        T* write_component_data();
+
+        template <class T>
+        T const* read_resource();
+
+        template <class T>
+        T* write_resource();
         
     };
 

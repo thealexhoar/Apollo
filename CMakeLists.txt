@@ -12,18 +12,20 @@ set(SOURCE_FILES
         src/resource_accessor.cpp
         src/system.cpp
         src/types.cpp
-)
+        src/dispatcher.cpp)
 
 set(HEADER_FILES
         src/apollo.hpp
+        src/component.hpp
         src/component_array.hpp
         src/entity.hpp
         src/resource_accessor.hpp
         src/resource_subscription.hpp
+        src/resource_wrapper.hpp
         src/system.hpp
         src/types.hpp
         src/world.hpp
-        src/component.hpp src/resource_wrapper.hpp)
+        src/dispatcher.hpp)
 
 set(CATCH_FILE test/catch/catch.hpp)
 

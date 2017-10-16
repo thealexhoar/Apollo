@@ -18,7 +18,7 @@ namespace apollo {
     ComponentArray::ComponentArray(
             size_t initial_capacity,
             size_t size,
-            int (*comparison)(Component*, Component*)
+            int (*comparison)(Component*, Component*, ResourceAccessor*)
     ) :
             _bytes(initial_capacity * size),
             _comparison(comparison),
@@ -38,7 +38,7 @@ namespace apollo {
     template <class T>
     ComponentArray* ComponentArray::new_for_type(
             size_t initial_capacity,
-            int (*comparison)(Component*, Component*)
+            int (*comparison)(Component*, Component*, ResourceAccessor*)
     ) {
         return new ComponentArray(initial_capacity, sizeof(T), comparison);
     }
@@ -89,7 +89,7 @@ namespace apollo {
         return true;
     }
 
-    void ComponentArray::sort() {
+    void ComponentArray::sort(ResourceAccessor* resource_accessor) {
         //allows for non-sorted component arrays
         if(_comparison == NULL) {
             return;
@@ -101,7 +101,7 @@ namespace apollo {
             for (size_t k = i; k > 1; k--) {
                 Component* c1 = reinterpret_cast<Component*>(data + k * _component_size);
                 Component* c2 = reinterpret_cast<Component*>(data + (k - 1) * _component_size);
-                if (_comparison(c1, c2) < 0) {
+                if (_comparison(c1, c2, resource_accessor) < 0) {
                     swap(c1, c2);
                 }
                 else {

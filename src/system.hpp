@@ -13,11 +13,12 @@ namespace apollo {
 
     class System {
         friend class World;
-    private:
+    protected:
         ResourceSubscription _subscription;
 
     public:
-        System(const ResourceSubscription& subscription);
+        System() : _subscription() {}
+        System(const ResourceSubscription& subscription) : _subscription(subscription) {}
         virtual void update(ResourceAccessor& accessor) = 0;
     };
 

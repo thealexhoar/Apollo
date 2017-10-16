@@ -10,11 +10,11 @@ NOTES:
 #include "component_array.hpp"
 #include "resource_wrapper.hpp"
 #include "types.hpp"
-#include "world.hpp"
 
 namespace apollo {
 
     //Worlds "create" ResourceAccessors, so best to forward declare here
+    class ComponentArray;
     class World;
 
     class ResourceAccessor {

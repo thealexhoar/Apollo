@@ -11,14 +11,16 @@ NOTES:
 
 #include "component.hpp"
 #include "entity.hpp"
+#include "resource_accessor.hpp"
 
 namespace apollo {
+    class ResourceAccessor;
 
     class ComponentArray {
     private:
         std::vector<uint8_t> _bytes;
         size_t _component_size, _current_size;
-        int (*_comparison)(Component*, Component*);
+        int (*_comparison)(Component*, Component*, ResourceAccessor*);
         std::unordered_map<Entity, Component*> _data_lookup;
         std::unordered_map<Component*, Entity> _reverse_data_lookup;
 
@@ -26,7 +28,7 @@ namespace apollo {
         ComponentArray(
                 size_t initial_capacity,
                 size_t size,
-                int (*comparison)(Component*, Component*)
+                int (*comparison)(Component*, Component*, ResourceAccessor*)
         );
         ComponentArray(size_t initial_capacity, size_t size);
         ~ComponentArray();
@@ -37,7 +39,7 @@ namespace apollo {
         template <class T>
         static ComponentArray* new_for_type(
                 size_t initial_capacity,
-                int (*comparison)(Component*, Component*)
+                int (*comparison)(Component*, Component*, ResourceAccessor*)
         );
 
         Component* get_data() {
@@ -64,7 +66,7 @@ namespace apollo {
 
         bool remove_for(const Entity& entity);
 
-        void sort();
+        void sort(ResourceAccessor* resource_accessor);
 
     private:
         void swap(Component* c1, Component* c2);

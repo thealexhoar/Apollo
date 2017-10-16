@@ -25,7 +25,7 @@ set(HEADER_FILES
         src/system.hpp
         src/types.hpp
         src/world.hpp
-        src/dispatcher.hpp)
+        src/dispatcher.hpp src/read_write_lock.hpp)
 
 set(CATCH_FILE test/catch/catch.hpp)
 

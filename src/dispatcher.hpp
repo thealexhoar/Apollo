@@ -10,6 +10,7 @@ NOTES:
 #include <vector>
 
 #include "system.hpp"
+#include "world.hpp"
 
 namespace apollo {
     template <class T>
@@ -19,17 +20,21 @@ namespace apollo {
     class Dispatcher {
         friend class DispatcherBuilder<T>;
     private:
-        bool _async;
+        std::vector<System*> _sorted_systems;
+        std::vector<uint32_t> _stages;
 
-        Dispatcher(bool async);
+        Dispatcher();
+
     public:
-        void dispatch(World& world);
+        void dispatch_parallel(World& world);
+        void dispatch_sequential(World& world);
     };
 
     template <class T>
     class DispatcherBuilder {
     private:
         T _last_system;
+        bool _last_system_set;
         std::map<T, System*> _systems;
         std::map<T, std::vector<T>> _topology;
 
@@ -40,7 +45,7 @@ namespace apollo {
 
         DispatcherBuilder<T>& after(const T& name);
 
-        Dispatcher<T> build(bool async);
+        Dispatcher<T> build();
     };
 
 }

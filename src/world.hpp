@@ -8,30 +8,37 @@ NOTES:
 #include <memory>
 #include <mutex>
 
+#include "component_array.hpp"
 #include "resource_accessor.hpp"
 #include "resource_subscription.hpp"
 #include "resource_wrapper.hpp"
+#include "read_write_lock.hpp"
 
 
 
 namespace apollo {
 
-    static constexpr const size_t INITIAL_CAPACITY = 1024;
+    static constexpr const size_t INITIAL_COMPONENT_CAPACITY = 1024;
+    static constexpr const uint32_t MAX_PARALLEL_READERS = 32;
 
     class ResourceAccessor;
+    class ComponentArray;
 
     class World {
     private:
         std::unordered_map<ComponentType, std::unique_ptr<ComponentArray>> _components;
-        std::unordered_map<ComponentType, std::mutex> _component_read_locks, _component_write_locks;
+        std::unordered_map<ComponentType, ReadWriteLock> _component_locks;
         std::unordered_map<ResourceType, std::unique_ptr<ResourceWrapper>> _resources;
-        std::unordered_map<ResourceType, std::mutex> _resource_read_locks, _resource_write_locks;
-
+        std::unordered_map<ResourceType, ReadWriteLock> _resource_locks;
         TypeManager _type_manager;
+
+        ResourceAccessor _all_resources;
 
     public:
         World();
         ~World();
+
+        ResourceAccessor& all_resources();
 
         ResourceAccessor* lock_for(const ResourceSubscription& resource_subscription);
 

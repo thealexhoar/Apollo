@@ -7,17 +7,20 @@ NOTES:
 
 namespace apollo {
 
-    World::World() :
+        World::World() :
             _components(),
-            _component_read_locks(),
-            _component_write_locks(),
+            _component_locks(),
             _resources(),
-            _resource_read_locks(),
-            _resource_write_locks(),
-            _type_manager()
+            _resource_locks(),
+            _type_manager(),
+            _all_resources(_type_manager)
     {}
 
     World::~World() {}
+
+    ResourceAccessor& World::all_resources() {
+        return _all_resources;
+    }
 
     ResourceAccessor* World::lock_for(const ResourceSubscription& resource_subscription) {
         ResourceAccessor* accessor = new ResourceAccessor(_type_manager);
@@ -26,7 +29,7 @@ namespace apollo {
                 it != resource_subscription._read_components.end();
                 it++
         ) {
-            _component_read_locks[*it].lock();
+            _component_locks[*it].lock_for_read();
             accessor->_read_components[*it] = _components[*it].get();
         }
         for (
@@ -34,8 +37,7 @@ namespace apollo {
                 it != resource_subscription._write_components.end();
                 it++
         ) {
-            _component_read_locks[*it].lock();
-            _component_write_locks[*it].lock();
+            _component_locks[*it].lock_for_write();
             accessor->_write_components[*it] = _components[*it].get();
         }
 
@@ -44,7 +46,7 @@ namespace apollo {
                 it != resource_subscription._read_resources.end();
                 it++
         ) {
-            _resource_read_locks[*it].lock();
+            _resource_locks[*it].lock_for_read();
             accessor->_read_resources[*it] = _resources[*it].get();
         }
 
@@ -53,8 +55,8 @@ namespace apollo {
                 it != resource_subscription._write_resources.end();
                 it++
         ) {
-            _resource_read_locks[*it].lock();
-            _resource_write_locks[*it].lock();
+            _resource_locks[*it].lock_for_write();
+
             accessor->_write_resources[*it] = _resources[*it].get();
         }
 
@@ -67,15 +69,14 @@ namespace apollo {
                 it != resource_accessor->_read_components.end();
                 it++
         ) {
-            _component_read_locks[it->first].unlock();
+            _component_locks[it->first].unlock_for_read();
         }
         for (
                 auto it = resource_accessor->_write_components.begin();
                 it != resource_accessor->_write_components.end();
                 it++
         ) {
-            _component_read_locks[it->first].unlock();
-            _component_write_locks[it->first].unlock();
+            _component_locks[it->first].unlock_for_write();
         }
 
         for (
@@ -83,7 +84,7 @@ namespace apollo {
                 it != resource_accessor->_read_resources.end();
                 it++
         ) {
-            _resource_read_locks[it->first].unlock();
+            _resource_locks[it->first].unlock_for_read();
         }
 
         for (
@@ -91,8 +92,7 @@ namespace apollo {
                 it != resource_accessor->_write_resources.end();
                 it++
         ) {
-            _resource_read_locks[it->first].unlock();
-            _resource_write_locks[it->first].unlock();
+            _resource_locks[it->first].unlock_for_write();
         }
     }
 
@@ -103,9 +103,9 @@ namespace apollo {
             return false;
         }
         else {
-            _components[type] = std::unique_ptr<ComponentArray>(ComponentArray::new_for_type<T>(INITIAL_CAPACITY));
-            _component_read_locks.emplace(type);
-            _component_write_locks.emplace(type);
+            _components[type] = std::unique_ptr<ComponentArray>(ComponentArray::new_for_type<T>(INITIAL_COMPONENT_CAPACITY));
+            _component_locks.emplace(type, MAX_PARALLEL_READERS);
+            _all_resources._write_components.insert({type, _components[type].get()});
             return true;
         }
     }
@@ -118,6 +118,8 @@ namespace apollo {
         }
         else {
             _resources[type] = std::unique_ptr<ResourceWrapper>(ResourceWrapper::new_for_type<T>(initial_value));
+            _resource_locks.emplace(type, MAX_PARALLEL_READERS);
+            _all_resources._write_resources.insert({type, _resources[type].get()});
             return true;
         }
     }

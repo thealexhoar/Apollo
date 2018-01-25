@@ -8,7 +8,5 @@ NOTES:
 #include <cinttypes>
 
 namespace apollo {
-
     typedef uint32_t Entity;
-
 }

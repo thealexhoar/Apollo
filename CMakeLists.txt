@@ -12,11 +12,10 @@ set(SOURCE_FILES
         src/resource_accessor.cpp
         src/system.cpp
         src/types.cpp
-        src/dispatcher.cpp)
+        src/parallel_dispatcher.cpp src/sequential_dispatcher.cpp)
 
 set(HEADER_FILES
         src/apollo.hpp
-        src/component.hpp
         src/component_array.hpp
         src/entity.hpp
         src/resource_accessor.hpp
@@ -25,13 +24,13 @@ set(HEADER_FILES
         src/system.hpp
         src/types.hpp
         src/world.hpp
-        src/dispatcher.hpp src/read_write_lock.hpp)
+        src/dispatcher.hpp src/read_write_lock.hpp src/parallel_dispatcher.hpp src/sequential_dispatcher.hpp src/storage.hpp)
 
 set(CATCH_FILE test/catch/catch.hpp)
 
 set(TEST_FILES
         test/apollo_tests.cpp
-)
+        test/component_array_test.cpp test/test_components.hpp)
 
 # Output Library
 add_library(apollo STATIC ${SOURCE_FILES} ${HEADER_FILES})

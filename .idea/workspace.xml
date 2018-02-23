@@ -13,30 +13,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e183da8-8485-47d9-81b4-4a21922feef3" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/entity_manager.hpp" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/map_storage.hpp" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/test/map_storage_test.cpp" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/test/test_systems.hpp" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
-      <change beforePath="$PROJECT_DIR$/src/apollo.hpp" afterPath="$PROJECT_DIR$/src/apollo.hpp" />
-      <change beforePath="$PROJECT_DIR$/src/component_array.cpp" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/component_array.hpp" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/dispatcher.hpp" afterPath="$PROJECT_DIR$/src/dispatcher.hpp" />
-      <change beforePath="$PROJECT_DIR$/src/entity.hpp" afterPath="$PROJECT_DIR$/src/entity.hpp" />
-      <change beforePath="$PROJECT_DIR$/src/resource_accessor.cpp" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/resource_accessor.hpp" afterPath="$PROJECT_DIR$/src/resource_accessor.hpp" />
-      <change beforePath="$PROJECT_DIR$/src/resource_subscription.hpp" afterPath="$PROJECT_DIR$/src/resource_subscription.hpp" />
-      <change beforePath="$PROJECT_DIR$/src/resource_wrapper.hpp" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/storage.hpp" afterPath="$PROJECT_DIR$/src/storage.hpp" />
-      <change beforePath="$PROJECT_DIR$/src/system.hpp" afterPath="$PROJECT_DIR$/src/system.hpp" />
-      <change beforePath="$PROJECT_DIR$/src/types.cpp" afterPath="$PROJECT_DIR$/src/types.cpp" />
-      <change beforePath="$PROJECT_DIR$/src/types.hpp" afterPath="$PROJECT_DIR$/src/types.hpp" />
-      <change beforePath="$PROJECT_DIR$/src/world.cpp" afterPath="$PROJECT_DIR$/src/world.cpp" />
-      <change beforePath="$PROJECT_DIR$/src/world.hpp" afterPath="$PROJECT_DIR$/src/world.hpp" />
-      <change beforePath="$PROJECT_DIR$/test/apollo_tests.cpp" afterPath="$PROJECT_DIR$/test/apollo_tests.cpp" />
-      <change beforePath="$PROJECT_DIR$/test/component_array_test.cpp" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/test/test_components.hpp" afterPath="$PROJECT_DIR$/test/test_components.hpp" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -282,7 +259,7 @@
       <workItem from="1518999265211" duration="6584000" />
       <workItem from="1519073014427" duration="9016000" />
       <workItem from="1519340220240" duration="4735000" />
-      <workItem from="1519360985670" duration="1135000" />
+      <workItem from="1519360985670" duration="1790000" />
     </task>
     <task id="LOCAL-00001" summary="Implemented some bare-bones class skeletons.">
       <created>1505599861905</created>
@@ -312,11 +289,18 @@
       <option name="project" value="LOCAL" />
       <updated>1516920741875</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Across-the-board refactors.&#10;&#10;Minor changes to apollo.hpp to reflect file changes.&#10;Removed ComponentArray to migrate to a generic Storage model.&#10;Refactored Entity to be index-based.&#10;Created EntityManager to handle creating and recycling new Entities.&#10;Created MapStorage, a &quot;trivial&quot; implementation of the new Storage model. Also created its respective iterators.&#10;Removed ResourceAccessor's implementation in preparation for its refactor.&#10;Changed ResourceSubscription to use std::unordered_set instead of std::set.&#10;Removed ResourceWrapper as any type is now allowed to be a resource.&#10;Created Storage as a generic interface for component storage implementations. Created read/write iterator interfaces as well.&#10;Refactored System to be simpler.&#10;Removed the TypeManager object.&#10;Refactored Types to be statically determined instead of attached to a TypeManager object.&#10;Deleted most of the World implementation in preparation for refactor.&#10;Minor other changes to tests and other files.">
+      <created>1519362736726</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1519362736726</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="169916000" />
+    <option name="totallyTimeSpent" value="170571000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="-25" width="1368" height="770" extended-state="0" />
@@ -354,7 +338,8 @@
     <MESSAGE value="More skeletons!" />
     <MESSAGE value="Added tests, refactored ComponentArray into a subclass of the abstract ComponentStorage, and implemented ComponentMap (another subclass of ComponentStorage)." />
     <MESSAGE value="Various changes." />
-    <option name="LAST_COMMIT_MESSAGE" value="Various changes." />
+    <MESSAGE value="Across-the-board refactors.&#10;&#10;Minor changes to apollo.hpp to reflect file changes.&#10;Removed ComponentArray to migrate to a generic Storage model.&#10;Refactored Entity to be index-based.&#10;Created EntityManager to handle creating and recycling new Entities.&#10;Created MapStorage, a &quot;trivial&quot; implementation of the new Storage model. Also created its respective iterators.&#10;Removed ResourceAccessor's implementation in preparation for its refactor.&#10;Changed ResourceSubscription to use std::unordered_set instead of std::set.&#10;Removed ResourceWrapper as any type is now allowed to be a resource.&#10;Created Storage as a generic interface for component storage implementations. Created read/write iterator interfaces as well.&#10;Refactored System to be simpler.&#10;Removed the TypeManager object.&#10;Refactored Types to be statically determined instead of attached to a TypeManager object.&#10;Deleted most of the World implementation in preparation for refactor.&#10;Minor other changes to tests and other files." />
+    <option name="LAST_COMMIT_MESSAGE" value="Across-the-board refactors.&#10;&#10;Minor changes to apollo.hpp to reflect file changes.&#10;Removed ComponentArray to migrate to a generic Storage model.&#10;Refactored Entity to be index-based.&#10;Created EntityManager to handle creating and recycling new Entities.&#10;Created MapStorage, a &quot;trivial&quot; implementation of the new Storage model. Also created its respective iterators.&#10;Removed ResourceAccessor's implementation in preparation for its refactor.&#10;Changed ResourceSubscription to use std::unordered_set instead of std::set.&#10;Removed ResourceWrapper as any type is now allowed to be a resource.&#10;Created Storage as a generic interface for component storage implementations. Created read/write iterator interfaces as well.&#10;Refactored System to be simpler.&#10;Removed the TypeManager object.&#10;Refactored Types to be statically determined instead of attached to a TypeManager object.&#10;Deleted most of the World implementation in preparation for refactor.&#10;Minor other changes to tests and other files." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

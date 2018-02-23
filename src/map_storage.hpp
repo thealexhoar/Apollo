@@ -11,21 +11,21 @@
 #include "apollo.hpp"
 
 namespace apollo {
-    template<class T>
+    template<class C>
     class MapStorageReadIterator;
 
-    template<class T>
+    template<class C>
     class MapStorageWriteIterator;
 
 
-    template<class T>
-    class MapStorage : public Storage<T> {
-        friend class MapStorageReadIterator<T>;
+    template<class C>
+    class MapStorage : public Storage<C> {
+        friend class MapStorageReadIterator<C>;
 
-        friend class MapStorageWriteIterator<T>;
+        friend class MapStorageWriteIterator<C>;
 
     private:
-        std::unordered_map<EIndex, T> _data;
+        std::unordered_map<EIndex, C> _data;
         std::set<Entity> _entities;
 
     public:
@@ -33,8 +33,8 @@ namespace apollo {
         MapStorage() : _data(), _entities() {}
 
 
-        bool add_for(const Entity& entity, const T& component) override {
-            const T &datum = static_cast<const T &>(component);
+        bool add_for(const Entity& entity, const C& component) override {
+            const C &datum = static_cast<const C &>(component);
             if (_data.count(entity.index) > 0) {
                 return false;
             } else {
@@ -44,22 +44,22 @@ namespace apollo {
             }
         }
 
-        T& get_for(const Entity& entity) override {
+        C& get_for(const Entity& entity) override {
             return _data.at(entity.index);
         }
 
-        const T& get_for(const Entity& entity) const override {
+        const C& get_for(const Entity& entity) const override {
             return _data.at(entity.index);
         }
 
-        std::shared_ptr<ReadIterator<T>> get_read_iterator() const override {
-            auto ptr = std::make_shared<MapStorageReadIterator<T>>(*this);
-            return std::static_pointer_cast<ReadIterator<T>>(ptr);
+        std::shared_ptr<ReadIterator<C>> get_read_iterator() const override {
+            auto ptr = std::make_shared<MapStorageReadIterator<C>>(*this);
+            return std::static_pointer_cast<ReadIterator<C>>(ptr);
         }
 
-        std::shared_ptr<WriteIterator<T>> get_write_iterator() override {
-            auto ptr = std::make_shared<MapStorageWriteIterator<T>>(*this);
-            return std::static_pointer_cast<WriteIterator<T>>(ptr);
+        std::shared_ptr<WriteIterator<C>> get_write_iterator() override {
+            auto ptr = std::make_shared<MapStorageWriteIterator<C>>(*this);
+            return std::static_pointer_cast<WriteIterator<C>>(ptr);
         }
 
         bool has_for(const Entity &entity) const override {
@@ -79,20 +79,20 @@ namespace apollo {
         void update() override {}
     };
 
-    template<class T>
-    class MapStorageReadIterator : public ReadIterator<T> {
+    template<class C>
+    class MapStorageReadIterator : public ReadIterator<C> {
     private:
-        const MapStorage<T> &_map_storage;
+        const MapStorage<C> &_map_storage;
         std::_Rb_tree_const_iterator<Entity> _iter;
         bool _complete = false;
 
     public:
-        MapStorageReadIterator(const MapStorage<T> &map_storage) :
+        MapStorageReadIterator(const MapStorage<C> &map_storage) :
                 _map_storage(map_storage) {
             _iter = map_storage._entities.cbegin();
         }
 
-        const T& get() const override {
+        const C& get() const override {
             return _map_storage._data.at(_iter->index);
         }
 
@@ -115,19 +115,19 @@ namespace apollo {
         }
     };
 
-    template<class T>
-    class MapStorageWriteIterator : public WriteIterator<T> {
+    template<class C>
+    class MapStorageWriteIterator : public WriteIterator<C> {
     private:
-        MapStorage<T> &_map_storage;
+        MapStorage<C> &_map_storage;
         std::_Rb_tree_const_iterator<Entity> _iter;
         bool _complete = false;
     public:
-        MapStorageWriteIterator(MapStorage<T> &map_storage) :
+        MapStorageWriteIterator(MapStorage<C> &map_storage) :
                 _map_storage(map_storage) {
             _iter = _map_storage._entities.begin();
         }
 
-        T& get() const override {
+        C& get() const override {
             return _map_storage._data.at(_iter->index);
         }
 

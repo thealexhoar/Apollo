@@ -3,6 +3,9 @@ CREATED: 16/09/17
 NOTES: 
 */
 
+#include <memory>
+
+#include "storage.hpp"
 #include "world.hpp"
 
 namespace apollo {
@@ -19,21 +22,26 @@ namespace apollo {
         return _all_resources;
     }
 
-    ResourceAccessor* World::lock_for(const ResourceSubscription& resource_subscription) {
+    std::unique_ptr<ResourceAccessor> World::lock_for(const ResourceSubscription& resource_subscription) {
         // TODO 2/18/2018: implement
+        return std::unique_ptr<ResourceAccessor>();
     }
 
-    void World::unlock_for(ResourceAccessor* resource_accessor) {
-        // TODO 2/18/2018: implement
-    }
-
-    template <class T>
+    template <class C, class S>
     bool World::register_component() {
-        // TODO 2/18/2018: implement
+        static_assert(std::is_base_of<Storage<C>, S>().value);
+        auto type = Types::component_type<C>();
+        if(_storages.count(type) > 0) {
+            return false;
+        }
+        else {
+            _storages[type] = std::make_shared<S>();
+            return true;
+        }
     }
 
-    template <class T>
-    bool World::register_resource(const T& initial_value) {
+    template <class R>
+    bool World::register_resource(const R& initial_value) {
         // TODO 2/18/2018: implement
     }
 }

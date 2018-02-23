@@ -30,37 +30,42 @@ namespace apollo {
             _resources()
         {}
 
+
     public:
 
-        template <class T>
-        const Storage<T>& read_storage() const {
-            auto type = Types::component_type<T>();
+        ~ResourceAccessor() {
+
+        }
+
+        template <class C>
+        const Storage<C>& read_storage() const {
+            auto type = Types::component_type<C>();
             auto void_ptr = _storages[type];
-            auto storage_ptr = std::static_pointer_cast<const Storage<T>>(void_ptr);
+            auto storage_ptr = std::static_pointer_cast<const Storage<C>>(void_ptr);
             return *storage_ptr;
         }
 
-        template <class T>
-        Storage<T>& get_storage() {
-            auto type = Types::component_type<T>();
+        template <class C>
+        Storage<C>& get_storage() {
+            auto type = Types::component_type<C>();
             auto void_ptr = _storages[type];
-            auto storage_ptr = std::static_pointer_cast<Storage<T>>(void_ptr);
+            auto storage_ptr = std::static_pointer_cast<Storage<C>>(void_ptr);
             return *storage_ptr;
         };
 
-        template <class T>
-        const T& read_resource() const {
-            auto type = Types::resource_type<T>();
+        template <class R>
+        const R& read_resource() const {
+            auto type = Types::resource_type<R>();
             auto void_ptr = _resources[type];
-            auto resource_ptr = std::static_pointer_cast<const T>(void_ptr);
+            auto resource_ptr = std::static_pointer_cast<const R>(void_ptr);
             return *resource_ptr;
         }
 
-        template <class T>
-        T& get_resource() {
-            auto type = Types::resource_type<T>();
+        template <class R>
+        R& get_resource() {
+            auto type = Types::resource_type<R>();
             auto void_ptr = _resources[type];
-            auto resource_ptr = std::static_pointer_cast<T>(void_ptr);
+            auto resource_ptr = std::static_pointer_cast<R>(void_ptr);
             return *resource_ptr;
         }
         

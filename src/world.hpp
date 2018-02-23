@@ -33,15 +33,13 @@ namespace apollo {
 
         ResourceAccessor& all_resources();
 
-        ResourceAccessor* lock_for(const ResourceSubscription& resource_subscription);
+        std::unique_ptr<ResourceAccessor> lock_for(const ResourceSubscription& resource_subscription);
 
-        void unlock_for(ResourceAccessor* resource_accessor);
-
-        template <class T>
+        template <class C, class S>
         bool register_component();
 
-        template <class T>
-        bool register_resource(const T& initial_value);
+        template <class R>
+        bool register_resource(const R& initial_value);
     };
 
 }

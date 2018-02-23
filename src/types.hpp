@@ -21,13 +21,13 @@ namespace apollo {
         static ResourceType _resource_type_counter;
 
     public:
-        template <class T>
+        template <class C>
         static ComponentType component_type() {
             static const ComponentType type = _component_type_counter++;
             return type;
         }
 
-        template <class T>
+        template <class R>
         static ResourceType resource_type() {
             static const ResourceType type = _resource_type_counter++;
             return type;

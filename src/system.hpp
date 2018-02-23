@@ -9,16 +9,15 @@ NOTES:
 #include "resource_subscription.hpp"
 
 namespace apollo {
+    class ResourceAccessor;
     class World;
 
     class System {
         friend class World;
-    protected:
-        ResourceSubscription _subscription;
 
     public:
-        System() : _subscription() {}
-        System(const ResourceSubscription& subscription) : _subscription(subscription) {}
+        System() {}
+        virtual const ResourceSubscription& get_subscription() const = 0;
         virtual void update(ResourceAccessor& accessor) = 0;
     };
 

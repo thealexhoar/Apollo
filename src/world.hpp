@@ -8,13 +8,10 @@ NOTES:
 #include <memory>
 #include <mutex>
 
-#include "component_array.hpp"
 #include "resource_accessor.hpp"
 #include "resource_subscription.hpp"
-#include "resource_wrapper.hpp"
 #include "read_write_lock.hpp"
-
-
+#include "types.hpp"
 
 namespace apollo {
 
@@ -22,15 +19,11 @@ namespace apollo {
     static constexpr const uint32_t MAX_PARALLEL_READERS = 32;
 
     class ResourceAccessor;
-    class ComponentArray;
 
     class World {
     private:
-        std::unordered_map<ComponentType, std::unique_ptr<ComponentArray>> _components;
-        std::unordered_map<ComponentType, ReadWriteLock> _component_locks;
-        std::unordered_map<ResourceType, std::unique_ptr<ResourceWrapper>> _resources;
-        std::unordered_map<ResourceType, ReadWriteLock> _resource_locks;
-        TypeManager _type_manager;
+        std::unordered_map<ComponentType, std::shared_ptr<void>> _storages;
+        std::unordered_map<ResourceType, std::shared_ptr<void>> _resources;
 
         ResourceAccessor _all_resources;
 

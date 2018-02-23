@@ -5,7 +5,7 @@ NOTES:
 
 #pragma once
 
-#include <set>
+#include <unordered_set>
 
 #include "types.hpp"
 
@@ -16,10 +16,10 @@ namespace apollo {
     class ResourceSubscription {
         friend class World;
     private:
-        std::set<ComponentType> _read_components;
-        std::set<ComponentType> _write_components;
-        std::set<ResourceType> _read_resources;
-        std::set<ResourceType> _write_resources;
+        std::unordered_set<ComponentType> _read_components;
+        std::unordered_set<ComponentType> _write_components;
+        std::unordered_set<ResourceType> _read_resources;
+        std::unordered_set<ResourceType> _write_resources;
 
     public:
         ResourceSubscription() :

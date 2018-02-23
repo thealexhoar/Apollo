@@ -6,6 +6,8 @@
 
 #include "../src/apollo.hpp"
 
+using namespace apollo;
+
 class TestComponent4 {
 public:
     int x;

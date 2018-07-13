@@ -6,5 +6,7 @@ NOTES:
 #include "catch/catch.hpp"
 #include <iostream>
 
+#include "../src/apollo.hpp"
+
 //this file is primarily just to ensure CATCH_CONFIG_MAIN is defined
 TEST_CASE("Initializing tests for Apollo!", "[main]") {}

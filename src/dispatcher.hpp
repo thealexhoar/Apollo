@@ -8,11 +8,8 @@ NOTES:
 #include "world.hpp"
 
 namespace apollo {
-    class World;
-
     class Dispatcher {
     public:
         virtual void dispatch(World& world) = 0;
     };
-
 }

@@ -9,7 +9,7 @@ cmake_policy( SET CMP0009 NEW)
 set(SOURCE_FILES
         src/world.cpp
         src/system.cpp
-        src/parallel_dispatcher.cpp src/sequential_dispatcher.cpp)
+        src/parallel_dispatcher.cpp src/sequential_dispatcher.cpp src/resource_accessor.cpp)
 
 set(HEADER_FILES
         src/apollo.hpp

@@ -17,7 +17,7 @@ namespace apollo {
     class SequentialDispatcher : public Dispatcher {
         friend class SequentialDispatcherBuilder;
     private:
-        std::vector<std::shared_ptr<System>> _systems;
+        std::vector<std::shared_ptr<System>> systems_;
 
     public:
         void dispatch(World& world) override;
@@ -29,8 +29,8 @@ namespace apollo {
     template<class T>
     class SequentialDispatcherBuilder {
     private:
-        std::map<T, std::shared_ptr<System>> _systems;
-        std::map<T, std::vector<T>> _topology;
+        std::map<T, std::shared_ptr<System>> systems_;
+        std::map<T, std::vector<T>> topology_;
     public:
         SequentialDispatcherBuilder();
 

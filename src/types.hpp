@@ -14,7 +14,6 @@ namespace apollo {
     typedef uint32_t ComponentType;
     typedef uint32_t ResourceType;
 
-
     class Types {
     private:
         static ComponentType _component_type_counter;
@@ -33,6 +32,4 @@ namespace apollo {
             return type;
         }
     };
-
-
 }

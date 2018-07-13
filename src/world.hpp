@@ -16,22 +16,24 @@ NOTES:
 namespace apollo {
 
     static constexpr const size_t INITIAL_COMPONENT_CAPACITY = 1024;
-    static constexpr const uint32_t MAX_PARALLEL_READERS = 32;
 
     class ResourceAccessor;
 
     class World {
+        friend class ResourceAccessor;
     private:
-        std::unordered_map<ComponentType, std::shared_ptr<void>> _storages;
-        std::unordered_map<ResourceType, std::shared_ptr<void>> _resources;
+        std::mutex mutex_;
+        std::unordered_map<ResourceType, std::shared_ptr<void>> resources_;
+        std::unordered_map<ComponentType, std::shared_ptr<void>> storages_;
+        std::unordered_map<ResourceType, ReadWriteLock> resource_locks_;
+        std::unordered_map<ComponentType, ReadWriteLock> storage_locks_;
 
-        ResourceAccessor _all_resources;
 
     public:
         World();
+        World(size_t initial_component_capacity);
+        World(const World& other);
         ~World();
-
-        ResourceAccessor& all_resources();
 
         std::unique_ptr<ResourceAccessor> lock_for(const ResourceSubscription& resource_subscription);
 

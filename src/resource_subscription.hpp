@@ -16,45 +16,45 @@ namespace apollo {
     class ResourceSubscription {
         friend class World;
     private:
-        std::unordered_set<ComponentType> _read_components;
-        std::unordered_set<ComponentType> _write_components;
-        std::unordered_set<ResourceType> _read_resources;
-        std::unordered_set<ResourceType> _write_resources;
+        std::unordered_set<ComponentType> read_components_;
+        std::unordered_set<ComponentType> write_components_;
+        std::unordered_set<ResourceType> read_resources_;
+        std::unordered_set<ResourceType> write_resources_;
 
     public:
         ResourceSubscription() :
-            _read_components(),
-            _write_components(),
-            _read_resources(),
-            _write_resources()
+            read_components_(),
+            write_components_(),
+            read_resources_(),
+            write_resources_()
         {}
 
-        ResourceSubscription& add_read_component(const ComponentType& type) {
-            if (_write_components.count(type) == 0) {
-                _read_components.insert(type);
+        ResourceSubscription& with_read_storage(const ComponentType &type) {
+            if (write_components_.count(type) == 0) {
+                read_components_.insert(type);
             }
             return *this;
         }
 
-        ResourceSubscription& add_write_component(const ComponentType& type) {
-            _write_components.insert(type);
-            if (_read_components.count(type) > 0) {
-                _read_components.erase(type);
+        ResourceSubscription& with_write_storage(const ComponentType& type) {
+            write_components_.insert(type);
+            if (read_components_.count(type) > 0) {
+                read_components_.erase(type);
             }
             return *this;
         }
 
-        ResourceSubscription& add_read_resource(const ResourceType& type) {
-            if (_write_resources.count(type) == 0) {
-                _read_resources.insert(type);
+        ResourceSubscription& with_read_resource(const ResourceType& type) {
+            if (write_resources_.count(type) == 0) {
+                read_resources_.insert(type);
             }
             return *this;
         }
 
-        ResourceSubscription& add_write_resource(const ResourceType& type) {
-            _write_resources.insert(type);
-            if (_read_resources.count(type) > 0) {
-                _read_resources.erase(type);
+        ResourceSubscription& with_write_resource(const ResourceType& type) {
+            write_resources_.insert(type);
+            if (read_resources_.count(type) > 0) {
+                read_resources_.erase(type);
             }
             return *this;
         }

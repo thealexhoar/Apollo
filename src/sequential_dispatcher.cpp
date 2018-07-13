@@ -6,20 +6,20 @@
 
 namespace apollo {
     template <class T>
-    SequentialDispatcher<T>::SequentialDispatcher() : _systems() {}
+    SequentialDispatcher<T>::SequentialDispatcher() : systems_() {}
 
 
     template <class T>
     void SequentialDispatcher<T>::dispatch(World &world) {
-        for (auto i = 0; i < _systems.size(); i++) {
-            _systems[i]->update(world.all_resources());
+        for (auto i = 0; i < systems_.size(); i++) {
+            //systems_[i]->update(world.all_resources());
         }
     }
 
     template <class T>
     SequentialDispatcherBuilder<T>::SequentialDispatcherBuilder() :
-            _systems(),
-            _topology()
+            systems_(),
+            topology_()
     {}
 
     template <class T>
@@ -28,15 +28,15 @@ namespace apollo {
         T ID,
         std::vector<T> dependencies
     ) {
-        _systems.insert(ID, system);
-        _topology.insert(ID, dependencies);
+        systems_.insert(ID, system);
+        topology_.insert(ID, dependencies);
     }
 
     template <class T>
     SequentialDispatcher<T> SequentialDispatcherBuilder<T>::build(){
         auto sequential_dispatcher = SequentialDispatcher<T>();
 
-        auto temp_topology = _topology;
+        auto temp_topology = topology_;
         auto sorted_IDs = std::vector<T>();
         auto independent_set = std::vector<T>();
 
@@ -80,8 +80,8 @@ namespace apollo {
         }
 
         for (auto i = 0; i < sorted_IDs.size(); i++) {
-            auto system = _systems[sorted_IDs[i]];
-            sequential_dispatcher._systems.push_back(system);
+            auto system = systems_[sorted_IDs[i]];
+            sequential_dispatcher.systems_.push_back(system);
         }
 
         return sequential_dispatcher;

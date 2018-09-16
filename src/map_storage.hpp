@@ -7,6 +7,7 @@
 #include <type_traits>
 #include <unordered_map>
 #include <unordered_set>
+#include <vector>
 
 #include "entity.hpp"
 #include "storage.hpp"
@@ -16,44 +17,57 @@ namespace apollo {
     class MapStorage : public Storage<C> {
 
     private:
-        std::unordered_map<EIndex, C> data_;
+        std::vector<C> data_;
+        std::unordered_map<EIndex, size_t> data_mappings_;
         std::unordered_set<Entity, EntityHash> entities_;
 
     public:
 
-        MapStorage() : data_(), entities_() {}
+        MapStorage() : data_(), data_mappings_(), entities_() {}
 
-        bool add_for(const Entity& entity, const C& component) override {
-            const C &datum = static_cast<const C &>(component);
-            if (data_.count(entity.index) > 0) {
+        bool add_for(const Entity& entity, C&& component) override {
+            if (entities_.count(entity) > 0) {
                 return false;
-            } else {
-                data_.insert(std::make_pair(entity.index, datum));
-                entities_.insert(entity);
-                return true;
             }
+
+            if (data_mappings_.count(entity.index) > 0) {
+                data_[data_mappings_[entity.index]] = component;
+            }
+            else {
+                data_mappings_[entity.index] = data_.size();
+                data_.push_back(component);
+            }
+
+            return true;
+        }
+
+        C* data() override {
+            return data_.data();
+        }
+
+        C const* read_data() const override {
+            return data_.data();
         }
 
         C& get_for(const Entity& entity) override {
-            return data_.at(entity.index);
+            return data_[data_mappings_[entity.index]];
         }
 
-        const C& get_for(const Entity& entity) const override {
-            return data_.at(entity.index);
-        }
-
-        bool has_for(const Entity &entity) const override {
+        bool has_for(const Entity& entity) override {
             return entities_.count(entity) > 0;
         }
 
-        bool remove_for(const Entity &entity) override {
+        const C& read_for(const Entity& entity) const override {
+            return data_[data_mappings_.at(entity.index)];
+        }
+
+        bool remove_for(const Entity& entity) override {
             if (entities_.count(entity) == 0) {
                 return false;
-            } else {
-                entities_.erase(entity);
-                data_.erase(entity.index);
-                return true;
             }
+
+            entities_.erase(entity);
+            return true;
         }
 
         void update() override {}

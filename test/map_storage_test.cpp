@@ -11,6 +11,6 @@ using namespace apollo;
 static constexpr const char* tag = "[map_storage]";
 
 TEST_CASE("MapStorage can be constructed", tag) {
-    MapStorage<TestComponent8> ms = MapStorage<TestComponent8>();
+    MapStorage<TestComponent8> ms();
     //REQUIRE(1 == 1);
 }

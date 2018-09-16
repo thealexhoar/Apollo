@@ -11,8 +11,8 @@ NOTES:
 #include <vector>
 
 namespace apollo {
-    typedef uint32_t ComponentType;
-    typedef uint32_t ResourceType;
+    typedef int32_t ComponentType;
+    typedef int32_t ResourceType;
 
     class Types {
     private:

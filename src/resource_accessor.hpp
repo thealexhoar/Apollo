@@ -23,17 +23,20 @@ namespace apollo {
 
     private:
         //TODO 2/18/2018: Implement
-        std::unordered_map<ResourceType, std::weak_ptr<const void>> read_resources_;
-        std::unordered_map<ComponentType, std::weak_ptr<const void>> read_storages_;
+        std::unordered_map<ResourceType, std::weak_ptr<void const>> read_resources_;
+        std::unordered_map<ComponentType, std::weak_ptr<void const>> read_storages_;
         std::unordered_map<ResourceType, std::weak_ptr<void>> write_resources_;
         std::unordered_map<ComponentType, std::weak_ptr<void>> write_storages_;
-        World& world_;
 
     private:
-        ResourceAccessor(World& world);
+        ResourceAccessor() :
+                read_resources_(),
+                read_storages_(),
+                write_resources_(),
+                write_storages_()
+        {}
 
     public:
-        ~ResourceAccessor();
 
         template <class C>
         const Storage<C>& read_storage() const {

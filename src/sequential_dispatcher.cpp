@@ -5,14 +5,11 @@
 #include "sequential_dispatcher.hpp"
 
 namespace apollo {
-    template <class T>
-    SequentialDispatcher<T>::SequentialDispatcher() : systems_() {}
 
-
-    template <class T>
-    void SequentialDispatcher<T>::dispatch(World &world) {
-        for (auto i = 0; i < systems_.size(); i++) {
-            //systems_[i]->update(world.all_resources());
+    void SequentialDispatcher::dispatch(World &world) {
+        for (auto& system: systems_) {
+            auto accessor = world.give_access(system->resource_subscription);
+            system->update(accessor);
         }
     }
 
@@ -33,8 +30,7 @@ namespace apollo {
     }
 
     template <class T>
-    SequentialDispatcher<T> SequentialDispatcherBuilder<T>::build(){
-        auto sequential_dispatcher = SequentialDispatcher<T>();
+    SequentialDispatcher SequentialDispatcherBuilder<T>::build() {
 
         auto temp_topology = topology_;
         auto sorted_IDs = std::vector<T>();
@@ -78,12 +74,12 @@ namespace apollo {
                 }
             }
         }
-
+        std::vector<std::shared_ptr<System>> systems;
         for (auto i = 0; i < sorted_IDs.size(); i++) {
             auto system = systems_[sorted_IDs[i]];
-            sequential_dispatcher.systems_.push_back(system);
+            systems.push_back(system);
         }
 
-        return sequential_dispatcher;
+        return SequentialDispatcher(std::move(systems));
     }
 }

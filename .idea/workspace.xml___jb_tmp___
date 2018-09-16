@@ -486,7 +486,7 @@
       <workItem from="1519340220240" duration="4735000" />
       <workItem from="1519360985670" duration="3744000" />
       <workItem from="1536942902728" duration="12117000" />
-      <workItem from="1536971161774" duration="11684000" />
+      <workItem from="1536971161774" duration="12289000" />
     </task>
     <task id="LOCAL-00001" summary="Implemented some bare-bones class skeletons.">
       <created>1505599861905</created>
@@ -534,7 +534,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="196326000" />
+    <option name="totallyTimeSpent" value="196931000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="3072" height="1728" extended-state="6" />

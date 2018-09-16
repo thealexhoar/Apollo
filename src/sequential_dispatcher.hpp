@@ -13,17 +13,14 @@
 #include "world.hpp"
 
 namespace apollo {
-    template<class T>
     class SequentialDispatcher : public Dispatcher {
-        friend class SequentialDispatcherBuilder;
     private:
         std::vector<std::shared_ptr<System>> systems_;
 
     public:
+        SequentialDispatcher(std::vector<std::shared_ptr<System>>&& systems) : systems_(systems) {}
         void dispatch(World& world) override;
 
-    private:
-        SequentialDispatcher();
     };
 
     template<class T>
@@ -39,6 +36,6 @@ namespace apollo {
                 T ID,
                 std::vector<T> dependencies
         );
-        SequentialDispatcher<T> build();
+        SequentialDispatcher build();
     };
 }

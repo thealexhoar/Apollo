@@ -20,9 +20,9 @@ namespace apollo {
 
         Entity(EIndex index, EGeneration generation) :
                 index(index),
+
                 generation(generation)
         {}
-
         bool operator==(const Entity& other) const {
             return index == other.index && generation == other.generation;
         }
@@ -34,7 +34,7 @@ namespace apollo {
         {
             auto h1 = static_cast<std::size_t>(e.index);
             auto h2 = static_cast<std::size_t>(e.generation);
-            return h1 ^ (h2 << 1); // or use boost::hash_combine (see Discussion)
+            return h1 ^ (h2 << 1);
         }
     };
 }

@@ -17,11 +17,3 @@
 #include "vec_storage.hpp"
 #include "world.hpp"
 
-
-
-#define NUM_ARGS(...)  (sizeof((int[]){1, __VA_ARGS__})/sizeof(int) - 1)
-
-#define TEST(...) { \
-    printf("NUM ARGS IS %d\n", NUM_ARGS(__VA_ARGS__)); \
-}
-

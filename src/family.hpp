@@ -14,29 +14,34 @@ namespace apollo {
     struct Family {
         std::vector<bool> all_bits;
         std::vector<bool> none_bits;
-        std::vector<bool> one_bits;
 
-        Family();
+        Family() : all_bits(), none_bits() {}
     };
 
 
+    //TODO: finish implementing
     class FamilyBuilder {
 
     public:
-        FamilyBuilder();
+        FamilyBuilder() {}
 
-        Family build();
+        Family build() {
+            return Family();
+        }
 
-        FamilyBuilder& with_all(...);
+        template <typename C>
+        FamilyBuilder& with() {
+            ComponentType type = Types::component_type<C>();
 
-        FamilyBuilder& with_none(...);
+            return *this;
+        }
 
-        FamilyBuilder& with_one(...);
+        template <typename C>
+        FamilyBuilder& without() {
+            ComponentType type = Types::component_type<C>();
 
-    private:
-        void with_all_helper(...);
-        void with_none_helper(...);
-        void with_one_helper(...);
+            return *this;
+        }
     };
 
 }

@@ -10,7 +10,7 @@ set(SOURCE_FILES
         src/world.cpp
         src/system.cpp
         src/sequential_dispatcher.cpp
-        src/types.cpp src/family.cpp)
+        src/types.cpp)
 
 set(HEADER_FILES
         src/apollo.hpp

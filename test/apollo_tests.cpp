@@ -17,5 +17,8 @@ TEST_CASE("Initializing tests for Apollo!", "[main]") {
 
     TEST(1, 2, 3, 4);
 
-    apollo::FamilyBuilder().with_all(1, 2, 3);
+    apollo::FamilyBuilder()
+        .with<int>()
+        .with<float>()
+        .with<double>();
 }

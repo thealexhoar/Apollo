@@ -3,14 +3,10 @@
 //
 
 #include "catch/catch.hpp"
-#include "../../apollo/src/map_storage.hpp"
-#include "test_components.hpp"
 
-using namespace apollo;
+//using namespace apollo;
 
 static constexpr const char* tag = "[map_storage]";
 
 TEST_CASE("MapStorage can be constructed", tag) {
-    MapStorage<TestComponent8> ms();
-    //REQUIRE(1 == 1);
 }

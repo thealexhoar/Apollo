@@ -19,9 +19,7 @@ namespace apollo {
         std::vector<EGeneration> gens_;
 
     public:
-        VecStorage() : data_(), gens_() {
-            printf("default constructa \n");
-        }
+        VecStorage() : data_(), gens_() {}
 
         bool add_for(const Entity& entity, C&& component) override {
             auto index = static_cast<size_t>(entity.index);

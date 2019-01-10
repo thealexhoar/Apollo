@@ -5,22 +5,16 @@ NOTES:
 
 #pragma once
 
-#include "resource_accessor.hpp"
-#include "resource_subscription.hpp"
 
 namespace apollo {
-    class ResourceAccessor;
     class World;
 
     class System {
 
     public:
-        const ResourceSubscription resource_subscription;
+        System() {}
 
-    public:
-        System(ResourceSubscription resource_subscription) : resource_subscription(resource_subscription) {}
-
-        virtual void update(ResourceAccessor& accessor) = 0;
+        virtual void update(World& world) = 0;
     };
 
 }

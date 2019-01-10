@@ -18,11 +18,16 @@ namespace apollo {
         const EIndex index;
         const EGeneration generation;
 
-        Entity(EIndex index, EGeneration generation) :
-                index(index),
+        Entity(EIndex index, EGeneration generation) : index(index), generation(generation) {}
 
-                generation(generation)
-        {}
+        Entity(const Entity& other) : index(other.index), generation(other.generation) {}
+
+        Entity(Entity&& other) : index(other.index), generation(other.generation) {}
+
+        Entity& operator=(Entity&& other) {
+             return *this = Entity(other);
+        }
+
         bool operator==(const Entity& other) const {
             return index == other.index && generation == other.generation;
         }

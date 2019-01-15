@@ -38,16 +38,9 @@ namespace apollo {
             return true;
         }
 
-        C* data() override {
-            return data_.data();
-        }
-
-        C const* read_data() const override {
-            return data_.data();
-        }
-
         C& get_for(const Entity& entity) override {
             auto index = static_cast<size_t>(entity.index);
+            assert(data_.size() > index);
             return data_[index];
         }
 
@@ -63,6 +56,7 @@ namespace apollo {
 
         const C& read_for(const Entity& entity) const override {
             auto index = static_cast<size_t>(entity.index);
+            assert(data_.size() > index);
             return data_[index];
         }
 

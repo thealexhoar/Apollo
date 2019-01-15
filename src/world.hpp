@@ -38,8 +38,7 @@ namespace apollo {
         {}
         ~World() {}
 
-        //TODO 12/20/18: add entity creation/destruction
-        //TODO 12/20/18: add family list maintenance
+
 
         Entity create_entity() {
             auto entity = entity_manager_.create_entity();
@@ -101,7 +100,7 @@ namespace apollo {
         }
 
         template <class R>
-        bool register_resource(const R& initial_value) {
+        bool register_resource(R&& value) {
             auto type = Types::resource_type<R>();
             if(resources_.count(type) > 0) {
                 return false;
@@ -126,8 +125,40 @@ namespace apollo {
             return id;
         }
 
-    private:
+        template <typename R>
+        R& get_resource() {
+            auto type = Types::resource_type<R>();
+            assert(resources_.count(type) > 0);
+            return *std::static_pointer_cast<R>(resources_.at(type));
+        }
 
+        template <typename R>
+        const R& read_resource() const {
+            auto type = Types::resource_type<R>();
+            assert(resources_.count(type) > 0);
+            return *std::static_pointer_cast<R>(resources_.at(type));
+        }
+
+        template <typename C>
+        Storage<C>& get_storage() {
+            auto type = Types::component_type<C>();
+            assert(storages_.count(type) > 0);
+            return *storages_.at(type);
+        }
+
+        template <typename C>
+        const Storage<C>& get_storage() const {
+            auto type = Types::component_type<C>();
+            assert(storages_.count(type) > 0);
+            return *storages_.at(type);
+        }
+
+        const std::unordered_set<Entity, EntityHash>& get_family(FamilyID id) const {
+            assert(families_.size() > id);
+            return *(families_[id].second);
+        }
+
+    private:
         std::vector<bool> bits_for(const Entity& entity) {
             auto bits = std::vector<bool>();
 

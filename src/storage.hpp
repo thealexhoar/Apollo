@@ -20,8 +20,6 @@ namespace apollo {
     class Storage : public GenericStorage {
     public:
         virtual bool add_for(const Entity& entity, C&& component) = 0;
-        virtual C* data() = 0;
-        virtual C const* read_data() const = 0;
         virtual C& get_for(const Entity& entity) = 0;
         virtual const C& read_for(const Entity& entity) const = 0;
     };

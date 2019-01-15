@@ -12,38 +12,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6432331a-136c-42a6-bc1b-d4a103999535" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/vector_bit_ops.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/dispatcher_tests.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/entity_manager_test.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/family_test.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/null_storage_tests.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/storage_tests.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/vec_storage_tests.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/world_tests.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/apollo.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/apollo.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dispatcher.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/dispatcher.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity_manager.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity_manager.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/family.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/family.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resource_accessor.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resource_subscription.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sequential_dispatcher.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sequential_dispatcher.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/map_storage.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/map_storage.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/null_storage.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/null_storage.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/storage.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/storage.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system.cpp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/system.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/system.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/types.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/vec_storage.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/vec_storage.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/world.cpp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/world.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/world.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/apollo_tests.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/test/apollo_tests.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/map_storage_test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/test/map_storage_test.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/dispatcher_tests.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/test/dispatcher_tests.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -75,8 +53,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/dispatcher_tests.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="282">
+              <caret line="46" column="96" selection-start-line="46" selection-start-column="96" selection-end-line="46" selection-end-column="96" />
               <folding>
                 <element signature="e#85#111#0" expanded="true" />
               </folding>
@@ -85,33 +63,33 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/apollo_tests.cpp">
+        <entry file="file://$PROJECT_DIR$/src/dispatcher.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="47" selection-start-line="7" selection-start-column="47" selection-end-line="7" selection-end-column="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/entity_manager_test.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" selection-start-line="4" selection-end-line="8" selection-end-column="54" />
+            <state relative-caret-position="136">
+              <caret line="57" column="28" selection-start-line="57" selection-start-column="28" selection-end-line="57" selection-end-column="28" />
               <folding>
-                <element signature="e#39#65#0" expanded="true" />
+                <element signature="e#53#67#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/dispatcher.hpp">
+        <entry file="file://$PROJECT_DIR$/src/system.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+            <state>
+              <caret column="2" selection-start-column="2" selection-end-column="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/world.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="232">
+              <caret line="108" column="86" lean-forward="true" selection-start-line="108" selection-start-column="86" selection-end-line="108" selection-end-column="86" />
               <folding>
-                <element signature="e#53#67#0" expanded="true" />
+                <element signature="e#47#64#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -143,25 +121,27 @@
         <option value="$PROJECT_DIR$/src/bit_vector.hpp" />
         <option value="$PROJECT_DIR$/test/map_storage_test.cpp" />
         <option value="$PROJECT_DIR$/src/vector_bit_ops.hpp" />
-        <option value="$PROJECT_DIR$/src/vec_storage.hpp" />
         <option value="$PROJECT_DIR$/test/family_test.cpp" />
         <option value="$PROJECT_DIR$/src/types.hpp" />
-        <option value="$PROJECT_DIR$/src/storage.hpp" />
         <option value="$PROJECT_DIR$/src/entity.hpp" />
         <option value="$PROJECT_DIR$/src/family.hpp" />
         <option value="$PROJECT_DIR$/src/resource_subscription.hpp" />
-        <option value="$PROJECT_DIR$/src/system.hpp" />
         <option value="$PROJECT_DIR$/src/sequential_dispatcher.hpp" />
         <option value="$PROJECT_DIR$/src/apollo.hpp" />
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/src/world.hpp" />
         <option value="$PROJECT_DIR$/test/storage_tests.hpp" />
         <option value="$PROJECT_DIR$/test/world_tests.hpp.cpp" />
         <option value="$PROJECT_DIR$/test/null_storage_tests.cpp" />
         <option value="$PROJECT_DIR$/test/vec_storage_tests.cpp" />
-        <option value="$PROJECT_DIR$/src/dispatcher.hpp" />
         <option value="$PROJECT_DIR$/test/catch/catch.hpp" />
         <option value="$PROJECT_DIR$/test/apollo_tests.cpp" />
+        <option value="$PROJECT_DIR$/src/storage.hpp" />
+        <option value="$PROJECT_DIR$/src/null_storage.hpp" />
+        <option value="$PROJECT_DIR$/src/vec_storage.hpp" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/src/map_storage.hpp" />
+        <option value="$PROJECT_DIR$/src/system.hpp" />
+        <option value="$PROJECT_DIR$/src/world.hpp" />
+        <option value="$PROJECT_DIR$/src/dispatcher.hpp" />
         <option value="$PROJECT_DIR$/test/dispatcher_tests.cpp" />
       </list>
     </option>
@@ -248,19 +228,19 @@
     <frame x="-1" y="-18" width="1368" height="769" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19924243" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20530303" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" weight="0.32954547" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49848485" weight="0.32872504" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49848485" visible="true" weight="0.32872504" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39938557" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Messages" order="8" sideWeight="0.49924242" weight="0.32872504" />
-      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" auto_hide="true" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50151515" side_tool="true" weight="0.32872504" />
       <window_info anchor="bottom" id="Version Control" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="CMake" order="12" />
@@ -294,18 +274,19 @@
       <window_info anchor="right" id="Database" order="4" />
     </layout-to-restore>
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/dispatcher.hpp</url>
+          <line>44</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/family.cpp" />
-    <entry file="file://$PROJECT_DIR$/src/null_storage.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/map_storage.hpp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/system.cpp" />
     <entry file="file://$PROJECT_DIR$/src/world.cpp" />
     <entry file="file://$PROJECT_DIR$/src/types.cpp" />
@@ -337,13 +318,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/vec_storage.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="31">
-          <caret line="21" column="41" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/vector_bit_ops.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="99">
@@ -369,13 +343,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/include/c++/8.2.1/bits/stl_vector.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="1089" column="6" selection-start-line="1089" selection-start-column="6" selection-end-line="1089" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/entity_manager.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -390,27 +357,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/include/c++/8.2.1/bits/unordered_set.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="99" column="17" selection-start-line="99" selection-start-column="17" selection-end-line="99" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/test_components.hpp">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/resource_subscription.hpp" />
-    <entry file="file://$PROJECT_DIR$/src/family.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
-          <folding>
-            <element signature="e#54#72#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/apollo.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -421,58 +371,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/system.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/entity.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="41" column="24" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="35" selection-start-column="35" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/storage.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-          <folding>
-            <element signature="e#127#136#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/world.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="24" column="56" selection-start-line="24" selection-start-column="46" selection-end-line="24" selection-end-column="56" />
-          <folding>
-            <element signature="e#47#64#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/storage_tests.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="39" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/world_tests.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
@@ -490,16 +392,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dispatcher.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
-          <folding>
-            <element signature="e#53#67#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/entity_manager_test.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -510,13 +402,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/catch/catch.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="10312" column="68" selection-start-line="10312" selection-start-column="68" selection-end-line="10312" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/apollo_tests.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -524,10 +409,124 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///usr/include/c++/8.2.1/bits/stl_vector.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="1058" column="6" selection-start-line="1058" selection-start-column="6" selection-end-line="1058" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/family.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-32">
+          <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
+          <folding>
+            <element signature="e#54#72#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/entity.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/vec_storage.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="58" column="41" selection-start-line="58" selection-start-column="41" selection-end-line="58" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/map_storage.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="46" column="57" selection-start-line="46" selection-start-column="57" selection-end-line="46" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/null_storage.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="752">
+          <caret line="49" column="31" selection-start-line="49" selection-start-column="31" selection-end-line="49" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/storage.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="24" column="6" lean-forward="true" selection-start-line="24" selection-start-column="6" selection-end-line="24" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/c++/8.2.1/bits/unordered_set.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="96" column="10" selection-start-line="96" selection-start-column="10" selection-end-line="96" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="19" column="27" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/world_tests.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/c++/8.2.1/bits/algorithmfwd.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="515" column="4" selection-start-line="515" selection-start-column="4" selection-end-line="515" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/catch/catch.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="11514" column="8" selection-start-line="11514" selection-start-column="8" selection-end-line="11514" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/world.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="108" column="86" lean-forward="true" selection-start-line="108" selection-start-column="86" selection-end-line="108" selection-end-column="86" />
+          <folding>
+            <element signature="e#47#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/system.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="2" selection-start-column="2" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dispatcher.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="57" column="28" selection-start-line="57" selection-start-column="28" selection-end-line="57" selection-end-column="28" />
+          <folding>
+            <element signature="e#53#67#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test/dispatcher_tests.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="282">
+          <caret line="46" column="96" selection-start-line="46" selection-start-column="96" selection-end-line="46" selection-end-column="96" />
           <folding>
             <element signature="e#85#111#0" expanded="true" />
           </folding>

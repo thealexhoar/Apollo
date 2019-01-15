@@ -32,14 +32,6 @@ namespace apollo {
             return true;
         }
 
-        C* data() override {
-            return NULL;
-        }
-
-        C const* read_data() const override {
-            return NULL;
-        }
-
         C& get_for(const Entity& entity) override {
             return null_value_;
         }

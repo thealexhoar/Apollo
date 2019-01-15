@@ -8,6 +8,7 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
+#include <assert.h>
 
 #include "entity.hpp"
 #include "storage.hpp"
@@ -41,16 +42,11 @@ namespace apollo {
             return true;
         }
 
-        C* data() override {
-            return data_.data();
-        }
-
-        C const* read_data() const override {
-            return data_.data();
-        }
-
         C& get_for(const Entity& entity) override {
-            return data_[data_mappings_[entity.index]];
+            assert(data_mappings_.count(entity.index) > 0);
+            auto index = data_mappings_.at(entity.index);
+            assert(data_.size() > index);
+            return data_[index];
         }
 
         bool has_for(const Entity& entity) override {
@@ -58,7 +54,10 @@ namespace apollo {
         }
 
         const C& read_for(const Entity& entity) const override {
-            return data_[data_mappings_.at(entity.index)];
+            assert(data_mappings_.count(entity.index) > 0);
+            auto index = data_mappings_.at(entity.index);
+            assert(data_.size() > index);
+            return data_[index];
         }
 
         bool remove_for(const Entity& entity) override {

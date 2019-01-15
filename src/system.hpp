@@ -12,8 +12,6 @@ namespace apollo {
     class System {
 
     public:
-        System() {}
-
         virtual void update(World& world) = 0;
     };
 

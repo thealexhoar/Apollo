@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.8)
 project(apollo)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 11)
 
 # Prevents cmake from following symbolic links using GLOB
 cmake_policy(SET CMP0009 NEW)

@@ -51,8 +51,8 @@ namespace apollo {
             T ID,
             std::vector<T> dependencies
         ) {
-            systems_.insert(ID, system);
-            topology_.insert(ID, dependencies);
+            systems_.insert(std::pair<T, std::shared_ptr<System>>(ID, system));
+            topology_.insert(std::pair<T, std::vector<T>>(ID, dependencies));
         }
 
         Dispatcher build() {
@@ -82,11 +82,15 @@ namespace apollo {
                     iterator++
                     ) {
                     std::vector<T>& topology = iterator->second;
-                    for (auto i = topology.size()-1; i >= 0; i--) {
-                        if (topology[i] == ID) {
-                            topology.erase(topology.begin()+i);
+
+                    std::remove_if(
+                        topology.begin(),
+                        topology.end(),
+                        [ID](T val)->bool {
+                            return val == ID;
                         }
-                    }
+                    );
+
                     if (topology.size() == 0) {
                         independent_set.push_back(iterator->first);
                     }
